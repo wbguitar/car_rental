@@ -36,7 +36,6 @@ namespace EFModel.Vehicles
         AirConditioned = 1,
         Radio = 2,
         GPS = 4,
-
     }
 
     public abstract class BaseVehicle
@@ -48,5 +47,4 @@ namespace EFModel.Vehicles
         public Engines Engine { get; set; }
         public Accessorie Accessories { get; set; } = Accessorie.AirConditioned | Accessorie.Radio;
     }
-
 }
