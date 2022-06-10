@@ -58,14 +58,23 @@ namespace EFModel.Models
         /// Gets a list of the <see cref="Accessory"/> from the given vehicle object
         /// </summary>
         /// <param name="v">Vehicle object for which to get accessories</param>
-        /// <returns></returns>
+        /// <returns>A collection of accessory related to the given vehicle</returns>
         public IEnumerable<Accessory> GetVehicoleAccessories(Vehicle v)
         {
             return VehicleAccessories
                 .Where(a => a.VehicleId == v.Id)
                 .Select(va => va.Accessory);
         }
-
+        /// <summary>
+        /// Creates an object of type <see cref="Vehicle"/> from the given parameters
+        /// </summary>
+        /// <param name="name">Vehicle's name</param>
+        /// <param name="category">Vehicle's category</param>
+        /// <param name="manufacturer">Vehicle's manufacturer</param>
+        /// <param name="transmission">Vehicle's transmission type</param>
+        /// <param name="engine">Vehicle's type</param>
+        /// <param name="accessories">Collection of <see cref="(string, int)"/> representing the accessories list</param>
+        /// <returns>Created vehicle object</returns>
         public Vehicle? BuildVehicle(string name, string category, string manufacturer, string transmission, string engine, IEnumerable<(string, int)> accessories = null)
         {
             var vehicle = new Vehicle()
@@ -88,21 +97,33 @@ namespace EFModel.Models
 
             return vehicle;
         }
-
-
-        public void SendToMaintenance(string vehicleName, DateTime untill)
+        /// <summary>
+        /// Sends the given vehicle to maintenance
+        /// </summary>
+        /// <param name="vehicleName">Vehicle to send to maintenance</param>
+        /// <param name="until">Maintenance expiration</param>
+        public void SendToMaintenance(string vehicleName, DateTime until)
         {
-            var releaseDate = untill.ToString("yyyy-MM-dd HH:mm:ss");
+            var releaseDate = until.ToString("yyyy-MM-dd HH:mm:ss");
             var query = $"exec sp_sendToMaintenance '{vehicleName}', '{releaseDate}'";
             Vehicles.FromSqlRaw(query).ToList();
         }
-
+        /// <summary>
+        /// Removes the given vehicle from maintenance
+        /// </summary>
+        /// <param name="vehicleName">Vehicle to remove from maintenance</param>
         public void RemoveFromMaintenances(string vehicleName)
         {
             var query = $"exec sp_removeFromMaintenance '{vehicleName}'";
             Vehicles.FromSqlRaw(query).ToList();
         }
-
+        /// <summary>
+        /// Rent a given vehicle to a given customer, for the given time range
+        /// </summary>
+        /// <param name="customer">Customer's name</param>
+        /// <param name="vehicleName">Vehicle's name</param>
+        /// <param name="dtFrom">Rent start date</param>
+        /// <param name="dtTo">Rent end date</param>
         public void RentVehicle(string customer, string vehicleName, DateTime dtFrom, DateTime dtTo)
         {
             var sfrom = dtFrom.ToString("yyyy-MM-dd HH:mm:ss");
@@ -110,15 +131,30 @@ namespace EFModel.Models
             var query = $"exec sp_RentVehicle '{customer}', '{vehicleName}', '{sfrom}', '{sto}'";
             Vehicles.FromSqlRaw(query).ToList();
         }
+        /// <summary>
+        /// Remove the given vehicle from the rent vehicles
+        /// </summary>
+        /// <param name="vehicleName">Name of the vehicle to unrent</param>
         public void UnrentVehicle(string vehicleName)
         {
             var query = $"exec sp_UnrentVehicle '{vehicleName}'";
             Vehicles.FromSqlRaw(query).ToList();
         }
-
+        /// <summary>
+        /// Gets all the available vehicles for the given time range, filtered by the given parameters
+        /// </summary>
+        /// <param name="dtFrom">Availability start date</param>
+        /// <param name="dtTo">Availability end date</param>
+        /// <param name="categories">Required vehicle's categories</param>
+        /// <param name="manufacturers">Required vehicle's manufacturers</param>
+        /// <param name="transmissions">Required vehicle's transmission types</param>
+        /// <param name="engines">Required vehicle's engine types</param>
+        /// <param name="accessories">Required vehicle's accessories</param>
+        /// <param name="minAccessoryStatus">Required vehicle's minimum accessory status</param>
+        /// <returns>A collection of <see cref="Vehicle"/> objects that are available for rent</returns>
         public IEnumerable<Vehicle> GetAvailableVehicles(DateTime dtFrom, DateTime dtTo, IEnumerable<string> categories = null,
             IEnumerable<string> manufacturers = null, IEnumerable<string> transmissions = null,
-            IEnumerable<string> engines = null, IEnumerable<string> accessories = null, int minStatus = 2)
+            IEnumerable<string> engines = null, IEnumerable<string> accessories = null, int minAccessoryStatus = 2)
         {
             //var underMaintenance = Maintenances.Where()
             //Vehicles.
@@ -129,12 +165,16 @@ namespace EFModel.Models
             var trans = string.Join(',', transmissions ?? new List<string>());
             var accs = string.Join(',', accessories ?? new List<string>());
             var engs = string.Join(',', engines ?? new List<string>());
-            //exec sp_VehicleRequest @dtfrom, @dtto, @minStatus, @accessories, @manufacturers, @engines, @categories, @transmissions
-            var query = $"exec sp_VehicleRequest '{from}', '{to}', {minStatus}, '{accs}', '{mans}', '{engs}', '{cats}', '{trans}'";
+            //exec sp_VehicleRequest @dtfrom, @dtto, @minAccessoryStatus, @accessories, @manufacturers, @engines, @categories, @transmissions
+            var query = $"exec sp_VehicleRequest '{from}', '{to}', {minAccessoryStatus}, '{accs}', '{mans}', '{engs}', '{cats}', '{trans}'";
             var vids = Vehicles.FromSqlRaw(query).ToList().Select(v => v.Id);
             return Vehicles.Where(v => vids.Contains(v.Id));
         }
-
+        /// <summary>
+        /// Serializes the given <see cref="Vehicle"/> object to a JSON string
+        /// </summary>
+        /// <param name="v">Vehicle object to convert</param>
+        /// <returns>JSON string representation of the given vehicle</returns>
         public string toJSON(Vehicle v)
         {
             return v.toJSON(this);

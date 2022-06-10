@@ -197,7 +197,7 @@ namespace EFModel.Models.Tests
 
             // check that selected vehicle has a non empty list of accessories
             Assert.NotEmpty(v.GetAcessories(ctx)
-                .Select(a => a.Name)
+                .Select(a => a.Item2.Name)
                 .Intersect(ctx.Accessories.Select(a => a.Name)));
         }
 

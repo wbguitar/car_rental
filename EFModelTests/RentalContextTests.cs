@@ -1,5 +1,4 @@
-﻿using EFModel.DataMng;
-using EFModel.Models;
+﻿using EFModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +25,8 @@ namespace EFModelTests
                 ctx.Manufacturers.RemoveRange(ctx.Manufacturers);
                 ctx.TransmissionTypes.RemoveRange(ctx.TransmissionTypes);
                 ctx.VehicleCategories.RemoveRange(ctx.VehicleCategories);
+                ctx.Customers.RemoveRange(ctx.Customers);
+                ctx.RentVehicles.RemoveRange(ctx.RentVehicles);
 
                 ctx.Maintenances.RemoveRange(ctx.Maintenances);
                 ctx.VehicleAccessories.RemoveRange(ctx.VehicleAccessories);
@@ -60,7 +61,6 @@ namespace EFModelTests
                     "Fiat",
                 }.ForEach(m => ctx.Manufacturers.Add(new Manufacturer() { Name = m }));
 
-
                 // Adding transmissions types
                 ctx.TransmissionTypes.AddRange(new List<TransmissionType>() {
                     new TransmissionType() { Name = "Auto"},
@@ -68,6 +68,17 @@ namespace EFModelTests
                 });
                 ctx.SaveChanges();
 
+                // Adding customers
+                ctx.Customers.Add(new Customer()
+                {
+                    Name = "Francesco Betti",
+                    Email = "betti.francesco@gmail.com",
+                    Telephone = "0393476114507"
+                });
+                ctx.Customers.Add(new Customer()
+                {
+                    Name = "John Doe"
+                });
 
                 // Adding vehicles
                 var vehicle = ctx.BuildVehicle("BMW Van", "Van", "BMW", "Auto", "Diesel", new[] { ("GPS", 4), ("Radio", 5) });
@@ -129,6 +140,13 @@ namespace EFModelTests
             using (var ctx = new CarRentalContext())
             {
                 Assert.NotEmpty(ctx.Vehicles);
+                Assert.NotEmpty(ctx.Customers);
+                Assert.NotEmpty(ctx.Accessories);
+                Assert.NotEmpty(ctx.EngineTypes);
+                Assert.NotEmpty(ctx.TransmissionTypes);
+                Assert.NotEmpty(ctx.Manufacturers);
+                Assert.Empty(ctx.RentVehicles);
+                Assert.Empty(ctx.Maintenances);
             }
         }
         public void Dispose()
