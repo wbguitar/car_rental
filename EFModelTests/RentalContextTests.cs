@@ -27,6 +27,7 @@ namespace EFModelTests
                 ctx.TransmissionTypes.RemoveRange(ctx.TransmissionTypes);
                 ctx.VehicleCategories.RemoveRange(ctx.VehicleCategories);
 
+                ctx.Maintenances.RemoveRange(ctx.Maintenances);
                 ctx.VehicleAccessories.RemoveRange(ctx.VehicleAccessories);
                 ctx.Vehicles.RemoveRange(ctx.Vehicles);
                 ctx.SaveChanges();
@@ -102,7 +103,6 @@ namespace EFModelTests
                 ctx.SaveChanges();
 
 
-
                 vehicle = ctx.BuildVehicle("Toyota Car", "Car", "Toyota", "Auto", "Petrol", new[] { ("GPS", 1), ("AirConditioned", 4) });
                 ctx.Vehicles.Add(vehicle);
                 ctx.SaveChanges();
@@ -115,8 +115,10 @@ namespace EFModelTests
                 ctx.Vehicles.Add(vehicle);
                 ctx.SaveChanges();
 
-                var res = ctx.Vehicles.FromSqlRaw("exec sp_sendToMaintenance ", "Mercedes Car", DateTime.Now).ToList();
-                ctx.SaveChanges();
+                Assert.Throws<Microsoft.Data.SqlClient.SqlException>(() => ctx.RemoveFromMaintenances("Mercedes Car"));
+                ctx.SendToMaintenance("Mercedes Car", DateTime.Now + TimeSpan.FromDays(7));
+                Assert.Throws<Microsoft.Data.SqlClient.SqlException>(() => ctx.SendToMaintenance("Mercedes Car", DateTime.Now + TimeSpan.FromDays(7)));
+                ctx.RemoveFromMaintenances("Mercedes Car");
             }
         }
 

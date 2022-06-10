@@ -17,6 +17,7 @@ namespace EFModel.Models
         }
 
         public virtual DbSet<Accessory> Accessories { get; set; } = null!;
+        public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<EngineType> EngineTypes { get; set; } = null!;
         public virtual DbSet<Maintenance> Maintenances { get; set; } = null!;
         public virtual DbSet<Manufacturer> Manufacturers { get; set; } = null!;
@@ -40,6 +41,17 @@ namespace EFModel.Models
             modelBuilder.Entity<Accessory>(entity =>
             {
                 entity.Property(e => e.Name).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.Property(e => e.Email).HasMaxLength(50);
+
+                entity.Property(e => e.Name).HasMaxLength(50);
+
+                entity.Property(e => e.Telephone)
+                    .HasMaxLength(20)
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<EngineType>(entity =>
@@ -72,6 +84,12 @@ namespace EFModel.Models
                     .HasName("PK_RentVehicles_1");
 
                 entity.Property(e => e.Vehicle).ValueGeneratedNever();
+
+                entity.HasOne(d => d.CustomerNavigation)
+                    .WithMany(p => p.RentVehicles)
+                    .HasForeignKey(d => d.Customer)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RentVehicles_Customers");
 
                 entity.HasOne(d => d.VehicleNavigation)
                     .WithOne(p => p.RentVehicle)
