@@ -15,8 +15,52 @@ namespace CarRentalService.Controllers
             _logger = logger;
         }
 
+        [HttpGet("Manufacturers")]
+        public IEnumerable<string> GetManufacturers()
+        {
+            using (var ctx = new CarRentalContext())
+            {
+                return ctx.Manufacturers
+                    .Select(m => m.Name)
+                    .ToList();
+            }
+        }
+
+        [HttpGet("Engines")]
+        public IEnumerable<string> GetEngines()
+        {
+            using (var ctx = new CarRentalContext())
+            {
+                return ctx.EngineTypes
+                    .Select(e => e.Name)
+                    .ToList();
+            }
+        }
+
+        [HttpGet("Transmissions")]
+        public IEnumerable<string> GetTransmissions()
+        {
+            using (var ctx = new CarRentalContext())
+            {
+                return ctx.TransmissionTypes
+                    .Select(t => t.Name)
+                    .ToList();
+            }
+        }
+
+        [HttpGet("Accessories")]
+        public IEnumerable<string> GetAccessories()
+        {
+            using (var ctx = new CarRentalContext())
+            {
+                return ctx.Accessories
+                    .Select(a => a.Name)
+                    .ToList();
+            }
+        }
+
         [HttpGet]
-        public IEnumerable<dynamic> GetAll()
+        public IEnumerable<dynamic> GetAllVehicles()
         {
             using (var ctx = new CarRentalContext())
             {
@@ -28,7 +72,7 @@ namespace CarRentalService.Controllers
         }
 
         [HttpGet("Id/{id}")]
-        public dynamic GetById(int id)
+        public dynamic GetVehicleById(int id)
         {
             using (var ctx = new CarRentalContext())
             {
@@ -42,7 +86,7 @@ namespace CarRentalService.Controllers
         }
 
         [HttpGet("Name/{name}")]
-        public dynamic GetByName(string name)
+        public dynamic GetVehicleByName(string name)
         {
             using (var ctx = new CarRentalContext())
             {
@@ -79,7 +123,7 @@ namespace CarRentalService.Controllers
                 var engs = engines.Split(' ');
                 var cats = categories.Split(' ');
                 var accs = accessories.Split(' ');
-                var vehicles = ctx.GetAvailableVehicles(from, to, minStatus: 2, manufacturers: mans, transmissions: trans,
+                var vehicles = ctx.GetAvailableVehicles(from, to, minAccessoryStatus: 2, manufacturers: mans, transmissions: trans,
                     categories: cats, accessories: accs).ToList();
                 foreach (var v in vehicles)
                 {
@@ -94,7 +138,7 @@ namespace CarRentalService.Controllers
             using (var ctx = new CarRentalContext())
             {
                 var cats = categories.Split(' ');
-                var vehicles = ctx.GetAvailableVehicles(from, to, minStatus: 2, categories: cats).ToList();
+                var vehicles = ctx.GetAvailableVehicles(from, to, minAccessoryStatus: 2, categories: cats).ToList();
                 foreach (var v in vehicles)
                 {
                     yield return v.CreateVehicle(ctx);
