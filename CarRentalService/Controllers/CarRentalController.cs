@@ -112,19 +112,20 @@ namespace CarRentalService.Controllers
             _logger = logger;
         }
 
-        [HttpGet("Available/{from}/{to}/{manufacturers}/{transmissions}/{engines}/{categories}/{accessories}/")]
-        public IEnumerable<dynamic> GetAvailables(DateTime from, DateTime to, string manufacturers = "", string transmissions = "",
-            string engines = "", string categories = "", string accessories = "")
+        //[HttpGet("Available/{from}/{to}/{manufacturers}/{transmissions}/{engines}/{categories}/{accessories}/")]
+        [HttpGet]
+        public IEnumerable<dynamic> GetAvailables(DateTime from, DateTime to, string? manufacturers = "", string? transmissions = "",
+            string? engines = "", string? categories = "", string? accessories = "", bool? hasExtraDoors = null, bool? hasTailLift = null)
         {
             using (var ctx = new CarRentalContext())
             {
-                var mans = manufacturers.Split(' ');
-                var trans = transmissions.Split(' ');
-                var engs = engines.Split(' ');
-                var cats = categories.Split(' ');
-                var accs = accessories.Split(' ');
+                var mans = string.IsNullOrEmpty(manufacturers) ? null : manufacturers.Split(' ');
+                var trans = string.IsNullOrEmpty(transmissions) ? null : transmissions.Split(' ');
+                var engs = string.IsNullOrEmpty(engines) ? null : engines.Split(' ');
+                var cats = string.IsNullOrEmpty(categories) ? null : categories.Split(' ');
+                var accs = string.IsNullOrEmpty(accessories) ? null : accessories.Split(' ');
                 var vehicles = ctx.GetAvailableVehicles(from, to, minAccessoryStatus: 2, manufacturers: mans, transmissions: trans,
-                    categories: cats, accessories: accs).ToList();
+                    categories: cats, accessories: accs, hasTailLift: hasTailLift, hasExtraDoors: hasExtraDoors).ToList();
                 foreach (var v in vehicles)
                 {
                     yield return v.CreateVehicle(ctx);
@@ -177,7 +178,6 @@ namespace CarRentalService.Controllers
                         return StatusCode(StatusCodes.Status500InternalServerError, $"Vehicle {vehicle} not found");
 
                     ctx.RentVehicle(customer, vehicle, from, to);
-                    //return CreatedAtAction(nameof(PostRent), new { vehicle = vehicle, from = from, to = to});
                     return StatusCode(StatusCodes.Status201Created);
                 }
                 catch (Exception e)

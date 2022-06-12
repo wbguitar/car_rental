@@ -153,11 +153,9 @@ namespace EFModel.Models
         /// <param name="minAccessoryStatus">Required vehicle's minimum accessory status</param>
         /// <returns>A collection of <see cref="Vehicle"/> objects that are available for rent</returns>
         public IEnumerable<Vehicle> GetAvailableVehicles(DateTime dtFrom, DateTime dtTo, IEnumerable<string> categories = null,
-            IEnumerable<string> manufacturers = null, IEnumerable<string> transmissions = null,
-            IEnumerable<string> engines = null, IEnumerable<string> accessories = null, int minAccessoryStatus = 2)
+            IEnumerable<string> manufacturers = null, IEnumerable<string> transmissions = null, IEnumerable<string> engines = null,
+            IEnumerable<string> accessories = null, int minAccessoryStatus = 2, bool? hasTailLift = null, bool? hasExtraDoors = null)
         {
-            //var underMaintenance = Maintenances.Where()
-            //Vehicles.
             var from = dtFrom.ToString("yyyy-MM-dd HH:mm:ss");
             var to = dtTo.ToString("yyyy-MM-dd HH:mm:ss");
             var cats = string.Join(',', categories ?? new List<string>());
@@ -168,7 +166,19 @@ namespace EFModel.Models
             //exec sp_VehicleRequest @dtfrom, @dtto, @minAccessoryStatus, @accessories, @manufacturers, @engines, @categories, @transmissions
             var query = $"exec sp_VehicleRequest '{from}', '{to}', {minAccessoryStatus}, '{accs}', '{mans}', '{engs}', '{cats}', '{trans}'";
             var vids = Vehicles.FromSqlRaw(query).ToList().Select(v => v.Id);
-            return Vehicles.Where(v => vids.Contains(v.Id));
+            var result = Vehicles.Where(v => vids.Contains(v.Id)).AsEnumerable();
+
+            var categoriesList = VehicleCategories.ToList();
+            if (hasTailLift.HasValue)
+                
+                result = result.ToList().Where(v =>
+                        v.GetCategory(this).TailLift == hasTailLift.Value
+                );
+            if (hasExtraDoors.HasValue && hasExtraDoors.Value)
+                result = from v in result.ToList()
+                         where v.GetCategory(this).ExtraDoors > 0
+                         select v;
+            return result;
         }
         /// <summary>
         /// Serializes the given <see cref="Vehicle"/> object to a JSON string

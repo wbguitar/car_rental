@@ -185,20 +185,52 @@ namespace EFModel.Models.Tests
             var categories = new[] { "Bus", "Van" };
             var accessories = new[] { "GPS" };
             var engines = new[] { "Petrol" };
+
             var vehicles = ctx.GetAvailableVehicles(from, to, categories: categories, accessories: accessories, engines: engines);
+
             Assert.NotEmpty(vehicles);
+            foreach (var vehicle in vehicles.ToList())
+            {
+                Assert.NotNull(vehicle);
+                Assert.Contains<string>(vehicle.GetCategory(ctx).Name.Trim(), categories);
+                Assert.Contains<string>(vehicle.GetEngine(ctx).Name.Trim(), engines);
+                Assert.Contains<string>(vehicle.GetTransmission(ctx).Name.Trim(), ctx.TransmissionTypes.Select(t => t.Name));
+                Assert.Contains<string>(vehicle.GetManufacturer(ctx).Name.Trim(), ctx.Manufacturers.Select(m => m.Name));
+                // check that selected vehicle has a non empty list of accessories
+                Assert.NotEmpty(vehicle.GetAcessories(ctx)
+                    .Select(a => a.Item2.Name)
+                    .Intersect(ctx.Accessories.Select(a => a.Name)));
 
-            var v = vehicles.FirstOrDefault();
-            Assert.NotNull(v);
-            Assert.Contains<string>(v.GetCategory(ctx).Name.Trim(), categories);
-            Assert.Contains<string>(v.GetEngine(ctx).Name.Trim(), engines);
-            Assert.Contains<string>(v.GetTransmission(ctx).Name.Trim(), ctx.TransmissionTypes.Select(t => t.Name));
-            Assert.Contains<string>(v.GetManufacturer(ctx).Name.Trim(), ctx.Manufacturers.Select(m => m.Name));
+            }
 
-            // check that selected vehicle has a non empty list of accessories
-            Assert.NotEmpty(v.GetAcessories(ctx)
-                .Select(a => a.Item2.Name)
-                .Intersect(ctx.Accessories.Select(a => a.Name)));
+
+            // all categories, engines, manufacturers, transmission, til lift yes => trucks
+            vehicles = ctx.GetAvailableVehicles(from, to, hasExtraDoors: false, hasTailLift: true, minAccessoryStatus: 1);
+            Assert.NotEmpty(vehicles);
+            foreach (var vehicle in vehicles.ToList())
+            {
+                Assert.NotNull(vehicle);
+                Assert.Contains<string>(vehicle.GetCategory(ctx).Name.Trim(), new[] { "Truck" });
+
+                // check that selected vehicle has a non empty list of accessories
+                Assert.NotEmpty(vehicle.GetAcessories(ctx)
+                    .Select(a => a.Item2.Name)
+                    .Intersect(ctx.Accessories.Select(a => a.Name)));
+            }
+
+            // all categories, engines, manufacturers, transmission, til lift yes => buses
+            vehicles = ctx.GetAvailableVehicles(from, to, hasExtraDoors: true, hasTailLift: false, minAccessoryStatus: 1);
+            Assert.NotEmpty(vehicles);
+            foreach (var vehicle in vehicles.ToList())
+            {
+                Assert.NotNull(vehicle);
+                Assert.Contains<string>(vehicle.GetCategory(ctx).Name.Trim(), new[] { "Bus" });
+
+                // check that selected vehicle has a non empty list of accessories
+                Assert.NotEmpty(vehicle.GetAcessories(ctx)
+                    .Select(a => a.Item2.Name)
+                    .Intersect(ctx.Accessories.Select(a => a.Name)));
+            }
         }
 
         [Fact]
