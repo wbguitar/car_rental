@@ -3,7 +3,7 @@ GO
 
 USE [CarRental]
 GO
-/****** Object:  Table [dbo].[Accessories]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[Accessories]    Script Date: 6/12/2022 2:51:03 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[Accessories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[Customers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EngineTypes]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[EngineTypes]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -47,7 +47,7 @@ CREATE TABLE [dbo].[EngineTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Maintenances]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[Maintenances]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -61,7 +61,7 @@ CREATE TABLE [dbo].[Maintenances](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Manufacturers]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[Manufacturers]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -75,7 +75,7 @@ CREATE TABLE [dbo].[Manufacturers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentVehicles]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[RentVehicles]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[RentVehicles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TransmissionTypes]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[TransmissionTypes]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +105,7 @@ CREATE TABLE [dbo].[TransmissionTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[VehicleAccessories]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[VehicleAccessories]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[VehicleAccessories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[VehicleCategories]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[VehicleCategories]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ CREATE TABLE [dbo].[VehicleCategories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Vehicles]    Script Date: 6/10/2022 1:15:39 PM ******/
+/****** Object:  Table [dbo].[Vehicles]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,143 +158,143 @@ CREATE TABLE [dbo].[Vehicles](
 GO
 SET IDENTITY_INSERT [dbo].[Accessories] ON 
 GO
-INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (180, N'GPS')
+INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (189, N'GPS')
 GO
-INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (181, N'AirConditioned')
+INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (190, N'AirConditioned')
 GO
-INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (182, N'Radio')
+INSERT [dbo].[Accessories] ([Id], [Name]) VALUES (191, N'Radio')
 GO
 SET IDENTITY_INSERT [dbo].[Accessories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Customers] ON 
 GO
-INSERT [dbo].[Customers] ([Id], [Name], [Telephone], [Email]) VALUES (1, N'Francesco Betti', N'0393476114507       ', NULL)
+INSERT [dbo].[Customers] ([Id], [Name], [Telephone], [Email]) VALUES (8, N'Francesco Betti', N'0393476114507       ', N'betti.francesco@gmail.com')
 GO
-INSERT [dbo].[Customers] ([Id], [Name], [Telephone], [Email]) VALUES (2, N'John Doe', NULL, NULL)
+INSERT [dbo].[Customers] ([Id], [Name], [Telephone], [Email]) VALUES (9, N'John Doe', NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Customers] OFF
 GO
 SET IDENTITY_INSERT [dbo].[EngineTypes] ON 
 GO
-INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (185, N'Petrol')
+INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (194, N'Petrol')
 GO
-INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (186, N'Diesel')
+INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (195, N'Diesel')
 GO
-INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (187, N'Electric')
+INSERT [dbo].[EngineTypes] ([Id], [Name]) VALUES (196, N'Electric')
 GO
 SET IDENTITY_INSERT [dbo].[EngineTypes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Manufacturers] ON 
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (341, N'Toyota')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (359, N'Toyota')
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (342, N'Volkswagen')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (360, N'Volkswagen')
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (343, N'BMW')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (361, N'BMW')
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (344, N'Mercedes')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (362, N'Mercedes')
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (345, N'Ford')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (363, N'Ford')
 GO
-INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (346, N'Fiat')
+INSERT [dbo].[Manufacturers] ([Id], [Name]) VALUES (364, N'Fiat')
 GO
 SET IDENTITY_INSERT [dbo].[Manufacturers] OFF
 GO
 SET IDENTITY_INSERT [dbo].[TransmissionTypes] ON 
 GO
-INSERT [dbo].[TransmissionTypes] ([Id], [Name]) VALUES (126, N'Auto')
+INSERT [dbo].[TransmissionTypes] ([Id], [Name]) VALUES (132, N'Auto')
 GO
-INSERT [dbo].[TransmissionTypes] ([Id], [Name]) VALUES (127, N'Manual')
+INSERT [dbo].[TransmissionTypes] ([Id], [Name]) VALUES (133, N'Manual')
 GO
 SET IDENTITY_INSERT [dbo].[TransmissionTypes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[VehicleAccessories] ON 
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (521, 242, 180, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (590, 272, 189, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (522, 242, 182, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (591, 272, 191, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (523, 243, 180, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (592, 273, 189, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (524, 243, 181, 3)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (593, 273, 190, 3)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (525, 244, 182, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (594, 274, 191, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (526, 244, 181, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (595, 274, 190, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (527, 245, 180, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (596, 275, 189, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (528, 245, 181, 2)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (597, 275, 190, 2)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (529, 246, 182, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (598, 276, 191, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (530, 246, 181, 3)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (599, 276, 190, 3)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (531, 247, 180, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (600, 277, 189, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (532, 247, 181, 2)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (601, 277, 190, 2)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (533, 248, 180, 3)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (602, 278, 189, 3)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (534, 248, 182, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (603, 278, 191, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (535, 248, 181, 3)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (604, 278, 190, 3)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (536, 249, 180, 1)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (605, 279, 189, 1)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (537, 249, 181, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (606, 279, 190, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (538, 250, 180, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (607, 280, 189, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (539, 250, 181, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (608, 280, 190, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (540, 250, 182, 4)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (609, 280, 191, 4)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (541, 251, 180, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (610, 281, 189, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (542, 251, 181, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (611, 281, 190, 5)
 GO
-INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (543, 251, 182, 5)
+INSERT [dbo].[VehicleAccessories] ([Id], [VehicleId], [AccessoryId], [Status]) VALUES (612, 281, 191, 5)
 GO
 SET IDENTITY_INSERT [dbo].[VehicleAccessories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[VehicleCategories] ON 
 GO
-INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (137, N'Car       ', 0, 0, 0)
+INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (149, N'Car       ', 0, 0, 0)
 GO
-INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (138, N'Van       ', 0, 0, 0)
+INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (150, N'Van       ', 0, 0, 0)
 GO
-INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (139, N'Bus       ', 0, 0, 3)
+INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (151, N'Bus       ', 0, 0, 3)
 GO
-INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (140, N'Truck     ', 1, 1, 0)
+INSERT [dbo].[VehicleCategories] ([Id], [Name], [DumpLoad], [TailLift], [ExtraDoors]) VALUES (152, N'Truck     ', 1, 1, 0)
 GO
 SET IDENTITY_INSERT [dbo].[VehicleCategories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Vehicles] ON 
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (242, N'BMW Van', 343, 186, 126, 138)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (272, N'BMW Van', 361, 195, 132, 150)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (243, N'Volkswagen Van', 342, 185, 127, 138)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (273, N'Volkswagen Van', 360, 194, 133, 150)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (244, N'Ford Van', 345, 185, 127, 138)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (274, N'Ford Van', 363, 194, 133, 150)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (245, N'Mercedes Bus', 344, 185, 127, 139)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (275, N'Mercedes Bus', 362, 194, 133, 151)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (246, N'Fiat Bus', 344, 186, 126, 139)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (276, N'Fiat Bus', 362, 195, 132, 151)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (247, N'Mercedes Truck', 344, 185, 127, 140)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (277, N'Mercedes Truck', 362, 194, 133, 152)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (248, N'BMW Truck', 343, 186, 126, 140)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (278, N'BMW Truck', 361, 195, 132, 152)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (249, N'Toyota Car', 341, 185, 126, 137)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (279, N'Toyota Car', 359, 194, 132, 149)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (250, N'Ford Car', 345, 186, 127, 137)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (280, N'Ford Car', 363, 195, 133, 149)
 GO
-INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (251, N'Mercedes Car', 344, 186, 126, 137)
+INSERT [dbo].[Vehicles] ([Id], [Name], [Manufacturer], [Engine], [Transmission], [Category]) VALUES (281, N'Mercedes Car', 362, 195, 132, 149)
 GO
 SET IDENTITY_INSERT [dbo].[Vehicles] OFF
 GO
-/****** Object:  Index [IX_VehicleAccessories_1]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  Index [IX_VehicleAccessories_1]    Script Date: 6/12/2022 2:51:04 PM ******/
 ALTER TABLE [dbo].[VehicleAccessories] ADD  CONSTRAINT [IX_VehicleAccessories_1] UNIQUE NONCLUSTERED 
 (
 	[AccessoryId] ASC,
@@ -358,7 +358,7 @@ ALTER TABLE [dbo].[VehicleAccessories]  WITH CHECK ADD  CONSTRAINT [CK_VehicleAc
 GO
 ALTER TABLE [dbo].[VehicleAccessories] CHECK CONSTRAINT [CK_VehicleAccessories]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_removeFromMaintenance]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_removeFromMaintenance]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -390,7 +390,7 @@ BEGIN
 	select * from Vehicles where id = @vehicleId
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_RentVehicle]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_RentVehicle]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -429,7 +429,7 @@ BEGIN
 	select * from Vehicles v where v.Name = @vehicleName
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_sendToMaintenance]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_sendToMaintenance]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -462,7 +462,7 @@ BEGIN
 	select * from Vehicles v where v.Name = @vehicleName
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_UnrentVehicle]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_UnrentVehicle]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -490,7 +490,7 @@ BEGIN
 	select * from Vehicles v where v.Name = @vehicleName
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_VehicleRequest]    Script Date: 6/10/2022 1:15:40 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_VehicleRequest]    Script Date: 6/12/2022 2:51:04 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
